@@ -11,6 +11,7 @@ input_filename = "test1"
 coordinates = open(input_filename + ".txt",'r')
 coor = []
 lines = coordinates.readlines()
+coordinates.close()
 for line in lines:
     coor.append(tuple(map(float,line.split())))
 n=coor.pop(0)[0]
@@ -25,7 +26,7 @@ isum=[]
 lengths = []
 for i in range(n):
     for j in range(i):
-        tmp=-((coor[i][0]-coor[j][0])**2+(coor[i][1]-coor[j][1])**2)
+        tmp=-math.sqrt((coor[i][0]-coor[j][0])**2+(coor[i][1]-coor[j][1])**2)
         s[j][i]=tmp
         s[i][j]=tmp
         lengths.append(tmp)
@@ -36,7 +37,7 @@ for i in range(n):
 #iter iterations
 iter = 100     
 for it in range(iter):
-    print(f"{2*it}%")
+    print(f"{100*it/iter}%")
     #r(i,k)
     for i in range(n):
         twomax = [-math.inf, -math.inf]
@@ -91,3 +92,4 @@ print(*output)
 output_file = open(input_filename+'_output.txt','w')
 for x in output:
     output_file.write(str(x)+" ")
+output_file.close()

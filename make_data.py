@@ -1,7 +1,7 @@
 import random
 
-n=20
-file = open('test1.txt','w')
+n=5000
+file = open('okok.txt','w')
 file.write(str(n)+"\n")
 for i in range(n):
     r1=random.uniform(0,1000)
