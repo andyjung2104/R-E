@@ -8,14 +8,15 @@ n=int(lines[0])
 w=[]
 for i in range(1,1+n):
     w.append(list(map(float,lines[i].split())))
+w=[[-u for u in w[i]] for i in range(n)]
 inputfile.close()
 
-T=0.003
+T=10**-2
 
 A=[[0]*n for i in range(n)]
 R=[[0]*n for i in range(n)]
 
-iter = 100
+iter = 5000
 #naive
 for it in range(iter):
     for k in range(n):
@@ -35,8 +36,14 @@ for i in range(n):
     for j in range(n):
         if R[i][j]+A[i][j]>0:
             output.append((i,j))
-
-
+#disable for large n
+for i in range(n):
+    for j in range(n):
+        if (i,j) in output:
+            print(1,end=" ")
+        else:
+            print(0,end=" ")
+    print()
 op_file = open(filename+"_output.txt",'w')
 for op in output:
     op_file.write(f"{op[0]} {op[1]}\n")

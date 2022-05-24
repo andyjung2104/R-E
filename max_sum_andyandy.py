@@ -1,33 +1,46 @@
 import math, statistics
 
-
+flag = False
 lmda = 0
+if flag:
+    # #region input
+    input_filename = "maxsumtest1"
+    coordinates = open(input_filename + ".txt",'r')
+    coor = []
+    lines = coordinates.readlines()
+    coordinates.close()
+    for line in lines:
+        coor.append(tuple(map(float,line.split())))
+    n=coor.pop(0)[0]
+    n=int(n+.5)//2
+    # #endregion
 
-#region input
-input_filename = "maxsumtest1"
-coordinates = open(input_filename + ".txt",'r')
-coor = []
-lines = coordinates.readlines()
-coordinates.close()
-for line in lines:
-    coor.append(tuple(map(float,line.split())))
-n=coor.pop(0)[0]
-n=int(n+.5)
-#endregion
+    #region girlboy
+    girl = [coor[i] for i in range(n)]
+    boy = [coor[i] for i in range(n,2*n)]
+    #endregion
+
+    s=[[0]*n for i in range(n)]
+    for i in range(n):
+        for j in range(n):
+            s[i][j]=simil(girl[i],boy[j])
+else:
+    s=[]
+    input_filename = 'ising_test_2'
+    txtfile = open(input_filename + ".txt",'r')
+    lines = txtfile.readlines()
+    n=lines.pop(0)
+    n=int(n)
+    for line in lines:
+        s.append(list(map(float,line.split())))
+    
+    
+
 
 def simil(p1,p2):
     return -math.sqrt((p1[0]-p2[0])**2+(p1[1]-p2[1])**2)
 
-#region girlboy
-n//=2
-girl = [coor[i] for i in range(n)]
-boy = [coor[i] for i in range(n,2*n)]
-#endregion
 
-s=[[0]*n for i in range(n)]
-for i in range(n):
-    for j in range(n):
-        s[i][j]=simil(girl[i],boy[j])
 
 
 a=[[0]*n for i in range(n)]
@@ -99,7 +112,7 @@ for i in range(n):
 print(len(lines))
 # print(girl,boy)
 print(*lines)
-output_file = open(input_filename+'_output.txt','w')
+output_file = open(input_filename+'_maxsumoutput.txt','w')
 for x in lines:
     output_file.write(f"{x[0]} {x[1]}\n")
 output_file.close()
