@@ -5,7 +5,7 @@ def randcolor():
     return "#"+''.join([random.choice('ABCDEF0123456789') for i in range(6)])
 
 #region input
-input_filename = "asdfasdf"
+input_filename = "maxsumtest1"
 coordinates = open(input_filename + ".txt",'r')
 coor = []
 lines = coordinates.readlines()

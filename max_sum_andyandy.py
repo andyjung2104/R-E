@@ -4,7 +4,7 @@ import math, statistics
 lmda = 0
 
 #region input
-input_filename = "okok"
+input_filename = "maxsumtest1"
 coordinates = open(input_filename + ".txt",'r')
 coor = []
 lines = coordinates.readlines()
