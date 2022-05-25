@@ -1,6 +1,6 @@
 import random, math
 
-n=20
+n=50
 file = open('ising_test_2.txt','w')
 file.write(str(n)+"\n")
 coor1 = [(random.random()/math.sqrt(2),random.random()/math.sqrt(2)) for i in range(n)]
